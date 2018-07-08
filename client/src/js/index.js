@@ -1,19 +1,12 @@
-require("Css/main.css");
-const image = require("Images/card_b_da.png");
-const createjs = require("createjs");
+import "Css/main.css"
 
+import createjs from "createjs";
+import Loading from "Js/game/loading.js";
 
 class Main {
 	constructor() {
-		console.log("HELLLLOOOOO");
-		console.log(image);
-		console.log(createjs);
-		this.displayImage();
-	}
-
-	displayImage() {
-		let ddom = document.getElementById("myimage");
-		ddom.src = image
+		const loading = new Loading();
+		loading.initialize();
 	}
 }
 

@@ -1,5 +1,9 @@
-html, body {
-	width: 100%;
-	height: 100%;
-	background: teal;
-}
+/*
+	Author: Eman Picar
+	Desc: Main entry point for css files
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Gaegu')
+@import url("./reset.css")
+@import url("./style.css")
+@import url("./ranking.css")

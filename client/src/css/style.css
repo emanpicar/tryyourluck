@@ -1,0 +1,58 @@
+body {
+	background: url("../images/bg_pattern.png") repeat;
+	font-family: 'Gaegu', cursive;
+	color: #efe9e9;
+}
+
+#layer {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 999;
+	width: 768px;
+	height: 480px;
+}
+
+#layer-bg {
+	position: absolute;
+	left: 0%;
+	top: 0%;
+	border: 1px solid white;
+	z-index: 50;
+	width: 100%;
+	height: 100%;
+}
+
+.layer-bg-tablebg {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	background: linear-gradient(rgba(0, 60, 35, 1), rgba(0, 88, 51, 1), rgba(1, 109, 65, 1), rgba(0, 90, 53, 1));
+	transform: translate(-50%, -50%);
+	width: 75%;
+	height: 65%;
+	border-radius: 1000px;
+	box-shadow: inset 0px 4px 6px rgba(0, 0, 0, .5);
+	z-index: 50;
+}
+
+.layer-bg-tableborder {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	height: 70%;
+	border-radius: 1000px;
+	background: linear-gradient(rgb(35, 34, 34), rgba(43, 43, 43, 1), rgb(39, 38, 38));
+	z-index: 10;
+}
+
+#layer-stage {
+	position: absolute;
+	left: 0%;
+	top: 0%;
+	z-index: 100;
+	transform: scale(1);
+}

@@ -13,8 +13,8 @@ module.exports = {
 	},
 	output: {
 		path: path.join(__dirname, './dist'),
-		filename: '[name].chunkhash.bundle.js',
-		chunkFilename: '[name].chunkhash.bundle.js'
+		filename: '[name].[chunkhash].bundle.js',
+		chunkFilename: '[name].[chunkhash].bundle.js'
 	},
 	resolve: {
 		modules: ['node_modules'],
@@ -49,7 +49,8 @@ module.exports = {
 				exclude: /node_modules/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    "css-loader"
+                    "css-loader",
+                    "postcss-loader"
                 ]
 			},
 			{
