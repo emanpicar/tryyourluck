@@ -14,7 +14,7 @@ type PageVariables struct {
 
 func main() {
 	http.HandleFunc("/", HomePage)
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("../client/dist/static"))))
+	http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("../client/dist/public"))))
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
@@ -26,7 +26,7 @@ func HomePage(w http.ResponseWriter, r *http.Request){
       Time: now.Format("15:04:05"),
     }
 
-    t, err := template.ParseFiles("../client/dist/views/index.html") //parse the html file homepage.html
+    t, err := template.ParseFiles("../client/dist/index.html") //parse the html file homepage.html
     if err != nil { // if there is an error
   	  log.Print("template parsing error: ", err) // log it
   	}

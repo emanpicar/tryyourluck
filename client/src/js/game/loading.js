@@ -56,6 +56,9 @@ export default class Loading {
 	drawPlayingCard(name) {
 		const playingCard = Game.createContainer(name, Game.positionList.playingCardPos.x, Game.positionList.playingCardPos.y);
 		playingCard.shadow = new createjs.Shadow("rgba(0, 0, 0, .4)", 5, 5, 10);
+		playingCard.addEventListener("click", () => {
+			this.menu.clickCard(name);
+		})
 
 		const card_back = Game.createImage("card_back", Game.queue.getResult("card_back"), 0, 0, .35, .35, 65, 101);
 
