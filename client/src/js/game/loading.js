@@ -1,12 +1,16 @@
 import createjs from "createjs";
 
 import Assets  from "Js/utils/assets.js";
-import Game  from "Js/utils/game.js";
+import Table  from "Js/game/table.js";
 import Menu  from "Js/game/menu.js";
+
+import Game  from "Js/utils/game.js";
+import Fixtures  from "Js/utils/fixtures.js";
 
 export default class Loading {
 	constructor() {
 		this.assets = new Assets();
+		this.table = new Table();
 		this.menu = new Menu();
 	}
 
@@ -28,10 +32,9 @@ export default class Loading {
 	}
 
 	drawAssets() {
-		console.log("creating assets...");
 		const cardDeck = this.drawDeck();
-		const cardLeft = this.drawPlayingCard("cardLeft");
-		const cardRight = this.drawPlayingCard("cardRight");
+		const cardLeft = this.drawPlayingCard(Fixtures.cardLeftName);
+		const cardRight = this.drawPlayingCard(Fixtures.cardRightName);
 
 		Game.stage.addChild(cardDeck, cardLeft, cardRight);
 		Game.stage.update();
@@ -57,10 +60,8 @@ export default class Loading {
 		const playingCard = Game.createContainer(name, Game.positionList.playingCardPos.x, Game.positionList.playingCardPos.y);
 		playingCard.shadow = new createjs.Shadow("rgba(0, 0, 0, .4)", 5, 5, 10);
 		playingCard.addEventListener("click", () => {
-			this.menu.clickCard(name);
-		})
-
-		const card_back = Game.createImage("card_back", Game.queue.getResult("card_back"), 0, 0, .35, .35, 65, 101);
+			this.table.clickCard(name);
+		});
 
 		const cardWin = Game.createContainer("cardWin", 0, 0);
 		cardWin.visible = false;
@@ -74,13 +75,20 @@ export default class Loading {
 		const icon_lose = Game.createImage("icon_lose", Game.queue.getResult("icon_lose"), 0, 0, .2, .2, 100, 68.5);
 		cardLose.addChild(card_lose, icon_lose);
 
-		playingCard.addChild(card_back, cardWin, cardLose);
+		const card_back = Game.createImage("card_back", Game.queue.getResult("card_back"), 0, 0, .35, .35, 65, 101);
+		card_back.visible = true;
+
+		playingCard.addChild(cardWin, cardLose, card_back);
+
+		// added attr
+		playingCard.clickDisable = true;
 
 		return playingCard;
 	}
 
 	complete() {
+		this.menu.initialize();
 		console.log("loading complete...");
-		this.menu.startGame();
+		console.log(Game.stage)
 	}
 }

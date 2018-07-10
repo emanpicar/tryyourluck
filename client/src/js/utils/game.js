@@ -8,6 +8,12 @@ const Game = {
 		leftCardRevealPos: {x: 230, y: 252},
 		rightCardRevealPos: {x: 530, y: 252},
 	},
+	player: {
+		score: 0,
+		name: null,
+		currentResult: ""
+	},
+	currentResult: {},
 	createContainer(name, x, y) {
 		const container = new createjs.Container();
 		container.name = name;
@@ -28,6 +34,7 @@ const Game = {
 
 		return image;
 	},
+	eventHandler: false,
 	eventListTimeout: null,
 	eventList: {},
 	gamePlay(event) {
@@ -35,14 +42,15 @@ const Game = {
 		let stringifyEventList = JSON.stringify(this.eventList);
 
 		if(stringifyEventList.match(true)) {
-
-			if(!createjs.Ticker.hasEventListener("tick")) {
+			clearTimeout(this.eventListTimeout)
+			if(!this.eventHandler) {
+				this.eventHandler = true;
 				createjs.Ticker.addEventListener("tick", this.stage);
 			}
 		} else {
-			clearTimeout(this.eventListTimeout)
 			this.eventListTimeout = setTimeout(() => {
-				createjs.Ticker.removeEventListener("tick", this.stage);
+				createjs.Ticker.removeEventListener("tick", this.eventHandler);
+				this.eventHandler = false;
 			}, 1000);
 		}
 	}
