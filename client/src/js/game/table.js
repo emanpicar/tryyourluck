@@ -10,10 +10,11 @@ export default class Table {
 		this.logic = new Logic();
 	}
 
-	startGame(gameResult) {
+	startGame() {
 		Game.gamePlay({name: "startGame", status: true});
 		const cardLeft = Game.stage.getChildByName(Fixtures.cardLeftName);
 		const cardRight = Game.stage.getChildByName(Fixtures.cardRightName);
+		let gameResult = Game.currentResult = this.logic.generateGameResult();
 
 		this.setGameResult(gameResult, cardLeft, cardRight);
 	}
@@ -91,16 +92,79 @@ export default class Table {
 				scaleX: 2
 			}, 300, createjs.Ease.sineIn)
 			.call(() => {
-				console.log("Result announcement!!");
 				Game.gamePlay({name: "clickCard", status: false});
+			})
+			.wait(500).call(() => {
 				this.clearStage();
-			});
+			})
 	}
 
 	clearStage() {
+		Game.gamePlay({name: "clearStage", status: true});
 		const cardLeft = Game.stage.getChildByName(Fixtures.cardLeftName);
 		const cardRight = Game.stage.getChildByName(Fixtures.cardRightName);
 
-		// TODO clearstage
+		cardLeft.clickDisable = true;
+		cardRight.clickDisable = true;
+		Game.player.pickResult = "";
+		Game.currentResult = {};
+
+		this.animateFlipCard(cardLeft, cardRight);
+	}
+
+	animateFlipCard(cardLeft, cardRight) {
+		createjs.Tween.get(cardLeft)
+			.to({
+				scaleX: cardLeft.getChildByName("card_back").visible ? 2 : 0
+			}, 300, createjs.Ease.sineIn)
+			.call(() => {
+				this.resetPlayingCard(cardLeft);
+			})
+			.to({
+				scaleX: 2
+			}, 300, createjs.Ease.sineIn);
+
+		createjs.Tween.get(cardRight)
+			.to({
+				scaleX: cardRight.getChildByName("card_back").visible ? 2 : 0
+			}, 300, createjs.Ease.sineIn)
+			.call(() => {
+				this.resetPlayingCard(cardRight);
+			})
+			.to({
+				scaleX: 2
+			}, 300, createjs.Ease.sineIn)
+			.call(() => {
+				this.animateReturnToDeck(cardLeft, cardRight);
+			});
+	}
+
+	animateReturnToDeck(cardLeft, cardRight) {
+		createjs.Tween.get(cardLeft)
+			.to({
+				x: Game.positionList.playingCardPos.x,
+				y: Game.positionList.playingCardPos.y,
+				scaleX: 1,
+				scaleY: 1,
+			}, 500, createjs.Ease.sineIn)
+			.call(() => {
+				createjs.Tween.get(cardRight)
+					.to({
+						x: Game.positionList.playingCardPos.x,
+						y: Game.positionList.playingCardPos.y,
+						scaleX: 1,
+						scaleY: 1,
+					}, 500, createjs.Ease.sineIn)
+					.wait(500).call(() => {
+						Game.gamePlay({name: "clearStage", status: false});
+						this.startGame();
+					});
+			})
+	}
+
+	resetPlayingCard(playingCard) {
+		playingCard.getChildByName("cardWin").visible = false;
+		playingCard.getChildByName("cardLose").visible = false;
+		playingCard.getChildByName("card_back").visible = true;
 	}
 }

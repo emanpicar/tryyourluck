@@ -11,7 +11,7 @@ const Game = {
 	player: {
 		score: 0,
 		name: null,
-		currentResult: ""
+		pickResult: ""
 	},
 	currentResult: {},
 	createContainer(name, x, y) {

@@ -15,17 +15,20 @@ export default class Logic {
 			gameResult[Fixtures.cardRightName] = Fixtures.loseStatus;
 		}
 
+		console.log(gameResult);
 		return gameResult;
 	}
 
 	updateGameScore(cardCont) {
 		const resultStatus = Game.currentResult[cardCont.name];
-		if(resultStatus == Fixtures.winStatus && Game.player.currentResult != Fixtures.loseStatus) Game.player.score++;
+		if(resultStatus == Fixtures.winStatus && Game.player.pickResult != Fixtures.loseStatus) Game.player.score++;
 		else {
 			Game.player.score = 0;
+			Game.player.pickResult = "";
+			Game.currentResult = {};
 		}
 
-		Game.player.currentResult = resultStatus;
-		console.log(Game.player)
+		Game.player.pickResult = resultStatus;
+		console.log(Game.player);
 	}
 }

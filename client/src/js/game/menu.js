@@ -1,11 +1,9 @@
 import Table  from "Js/game/table.js";
-import Logic  from "Js/game/logic.js";
 import Game  from "Js/utils/game.js";
 
 export default class Menu {
 	constructor() {
 		this.table = new Table();
-		this.logic = new Logic();
 	}
 
 	initialize() {
@@ -17,8 +15,7 @@ export default class Menu {
 	startGame() {
 		if(Game.player.name == null) return;
 
-		Game.currentResult = this.logic.generateGameResult();
-		this.table.startGame(Game.currentResult);
+		this.table.startGame();
 		console.log("startGame")
 	}
 
