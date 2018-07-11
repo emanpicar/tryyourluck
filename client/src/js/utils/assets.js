@@ -3,6 +3,8 @@ import card_lose from "Images/card_lose.png"
 import card_back from "Images/card_back.png"
 import icon_lose from "Images/icon_lose.png"
 import icon_win from "Images/icon_win.png"
+import blast_lose from "Images/blast_lose.png"
+import blast_win from "Images/blast_win.png"
 
 export default class Assets {
 	constructor() {}
@@ -14,6 +16,8 @@ export default class Assets {
 			{id: "card_back", src: card_back},
 			{id: "icon_lose", src: icon_lose},
 			{id: "icon_win", src: icon_win},
+			{id: "blast_lose", src: blast_lose},
+			{id: "blast_win", src: blast_win},
 		];
 	}
 }
