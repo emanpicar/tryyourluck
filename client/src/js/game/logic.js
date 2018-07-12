@@ -21,14 +21,13 @@ export default class Logic {
 
 	updateGameScore(cardCont) {
 		const resultStatus = Game.currentResult[cardCont.name];
-		if(resultStatus == Fixtures.winStatus && Game.player.pickResult != Fixtures.loseStatus) Game.player.score++;
-		else {
+		if(!Game.player.pickResult) Game.player.pickResult = resultStatus;
+		if(Game.player.pickResult == Fixtures.winStatus && Game.player.pickResult == resultStatus) {
+			Game.player.score++;
+		} else if(Game.player.pickResult == Fixtures.loseStatus && Game.player.pickResult == resultStatus) {
 			Game.player.score = 0;
-			Game.player.pickResult = "";
+			Game.player.pickResult = null;
 			Game.currentResult = {};
 		}
-
-		Game.player.pickResult = resultStatus;
-		console.log(Game.player);
 	}
 }

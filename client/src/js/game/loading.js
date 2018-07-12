@@ -93,8 +93,10 @@ export default class Loading {
         const winnerAnimation = Game.createContainer("winnerAnimation", 234, 84);
         winnerAnimation.visible = false;
 
-        const winSprite = Game.createSprite("winSprite", Game.queue.getResult("blast_win"), 300, 300, {blast: [0, 36]})
+        const winSprite = Game.createSprite("winSprite", Game.queue.getResult("blast_win"), 300, 300, {blast: [0, 36]});
+        winSprite.alpha = 0;
         const youWin = Game.createText("youWin", "You           Win", "bold 50px Gaegu", "#e2dd27", -40, 85);
+		youWin.alpha = 0;
 
         winnerAnimation.addChild(winSprite, youWin);
 
@@ -102,13 +104,13 @@ export default class Loading {
     }
 
     drawLoseAnimation() {
-        Game.gamePlay({name: "drawLoseAnimation", status: true});
         const loserAnimation = Game.createContainer("loserAnimation", 234, 84);
         loserAnimation.visible = false;
 
-        const loseSprite = Game.createSprite("loseSprite", Game.queue.getResult("blast_lose"), 300, 300, {blast: [0, 36]})
-        // loseSprite.play("blast")
+        const loseSprite = Game.createSprite("loseSprite", Game.queue.getResult("blast_lose"), 300, 300, {blast: [0, 36]});
+        loseSprite.alpha = 0;
         const youLose = Game.createText("youLose", "You           Lose", "bold 50px Gaegu", "#c70c0c", -45, 85);
+        youLose.alpha = 0;
 
         loserAnimation.addChild(loseSprite, youLose);
 
@@ -117,11 +119,19 @@ export default class Loading {
 
     drawContinue() {
         const continueBtn = Game.createContainer("continueBtn", 300, 340);
+        continueBtn.cursor = "pointer";
         continueBtn.visible = false;
+        continueBtn.alpha = 0;
+
+        continueBtn.addEventListener("click", () => {
+            this.table.clickContinue();
+        });
+
         const roundRect = new createjs.Shape();
         roundRect.graphics
             .setStrokeStyle(5)
             .beginStroke("#272727")
+            .beginFill("rgba(0,0,0,.1)")
             .drawRoundRect(0, 0, 165, 30, 5);
 
         const continueGame = Game.createText("continueGame", "Continue", "bold 30px Gaegu", "#272727", 30, 23);

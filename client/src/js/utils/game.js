@@ -3,6 +3,7 @@ import createjs from "createjs";
 const Game = {
     stage: "",
     queue: "",
+    isPlaying: false,
     positionList: {
         playingCardPos: {x: 380, y: 142},
         leftCardRevealPos: {x: 230, y: 252},
@@ -11,7 +12,7 @@ const Game = {
     player: {
         score: 0,
         name: null,
-        pickResult: ""
+        pickResult: null
     },
     currentResult: {},
     createContainer(name, x, y) {
@@ -53,12 +54,6 @@ const Game = {
         text.y = y;
         text.textBaseline = "alphabetic";
 
-        // var text = new createjs.Text("You Lucky ****", "30px Gaegu", "#b37a13");
-        // text.name = "testName"
-        //  text.x = 100;
-        //  text.y = 100;
-        //  text.textBaseline = "alphabetic";
-
         return text;
     },
     eventHandler: false,
@@ -80,7 +75,8 @@ const Game = {
                 this.eventHandler = false;
             }, 1000);
         }
-    }
+    },
+    table: null,
 };
 
 export default Game;

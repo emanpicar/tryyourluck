@@ -13,7 +13,7 @@ export default class Menu {
 	}
 
 	startGame() {
-		if(Game.player.name == null) return;
+		if(Game.player.name == null || Game.isPlaying) return;
 
 		this.table.startGame();
 		console.log("startGame")
@@ -27,6 +27,8 @@ export default class Menu {
 		console.log("newPlayer")
 		Game.player.name = "Eman Picar";
 		Game.player.score = 0;
+
+		Game.isPlaying = false;
 	}
 
 	addEvents(elemId, eventType, callback) {
