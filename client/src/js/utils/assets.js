@@ -5,6 +5,8 @@ import icon_lose from "Images/icon_lose.png"
 import icon_win from "Images/icon_win.png"
 import blast_lose from "Images/blast_lose.png"
 import blast_win from "Images/blast_win.png"
+import golang_i from "Images/golang_i.png"
+import try_your_luck from "Images/try_your_luck.gif"
 
 export default class Assets {
 	constructor() {}
@@ -18,6 +20,7 @@ export default class Assets {
 			{id: "icon_win", src: icon_win},
 			{id: "blast_lose", src: blast_lose},
 			{id: "blast_win", src: blast_win},
+			{id: "try_your_luck", src: try_your_luck},
 		];
 	}
 }

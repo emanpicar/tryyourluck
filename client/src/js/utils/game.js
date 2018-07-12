@@ -76,7 +76,24 @@ const Game = {
             }, 1000);
         }
     },
-    table: null,
+    disableMenu(elemId, style, disable) {
+        let dom = document.getElementById(elemId);
+
+        if(disable) dom.classList.add(style);
+        else dom.classList.remove(style);
+    },
+    disableNewPlayer: false,
+    needToClearStage: false,
+    setPlayerNameInDom(playerName) {
+        let gName = document.getElementById("gName");
+
+        gName.innerText = playerName;
+    },
+    setPlayerScoreInDom(playerScore) {
+        let gScore = document.getElementById("gScore");
+
+        gScore.innerText = playerScore;
+    }
 };
 
 export default Game;

@@ -15,7 +15,6 @@ export default class Logic {
 			gameResult[Fixtures.cardRightName] = Fixtures.loseStatus;
 		}
 
-		console.log(gameResult);
 		return gameResult;
 	}
 

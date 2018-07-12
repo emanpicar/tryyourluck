@@ -4,11 +4,7 @@
 	<title>Try Your Luck</title>
 </head>
 <body>
-	<!-- [S] -->
-	<button id="gStart">Start</button>
-	<button id="gReset">Reset</button>
-	<button id="gNewPlayer">New Player</button>
-	<!-- [E] -->
+	<div class="try-your-luck-gif"></div>
 
 	<div id="layer">
 		<div id="layer-bg">
@@ -24,35 +20,56 @@
 		</div>
 		<div class="ranking-row-players">
 			<p>1</p>
-			<p>Emmanuel</p>
+			<p>Player 1</p>
 		</div>
 		<div class="ranking-row-players">
 			<p>2</p>
-			<p>Elena</p>
+			<p>Player 2</p>
 		</div>
 		<div class="ranking-row-players">
 			<p>3</p>
-			<p>Bobi</p>
+			<p>Player 3</p>
 		</div>
 		<div class="ranking-row-players">
 			<p>4</p>
-			<p>Romilyn</p>
+			<p>Player 4</p>
 		</div>
 		<div class="ranking-row-players">
 			<p>5</p>
-			<p>Sarah</p>
+			<p>Player 5</p>
 		</div>
 		<div class="ranking-row-players">
 			<p>6</p>
-			<p>BJ</p>
+			<p>Player 6</p>
 		</div>
 		<div class="ranking-row-players">
 			<p>7</p>
-			<p>Goku</p>
+			<p>Player 7</p>
 		</div>
 		<div class="ranking-row-players">
 			<p>8</p>
-			<p>Troy</p>
+			<p>Player 8</p>
+		</div>
+	</div>
+
+	<div class="menu-cont">
+		<div id="gStart" class="menu-start">
+			<p>Start</p>
+		</div>
+		<div id="gNewPlayer" class="menu-new-player">
+			<p>New Player</p>
+		</div>
+		<input id="gInputNewPlayer" class="menu-new-player-input" type="text" placeholder="type your name here...">
+	</div>
+
+	<div class="info-board">
+		<div class="info-board-name">
+			<p>Name:</p>
+			<p id="gName">Player 1</p>
+		</div>
+		<div class="info-board-score">
+			<p>Score:</p>
+			<p id="gScore">0</p>
 		</div>
 	</div>
 </body>

@@ -18,7 +18,6 @@ body {
 	position: absolute;
 	left: 0%;
 	top: 0%;
-	border: 1px solid white;
 	z-index: 50;
 	width: 100%;
 	height: 100%;
@@ -55,4 +54,161 @@ body {
 	top: 0%;
 	z-index: 100;
 	transform: scale(1);
+}
+
+.menu-cont {
+	position: absolute;
+	top: 20%;
+	right: 1%;
+	width: 200px;
+	height: 270px;
+	background: url(../images/golang_i.png);
+	background-size: 100%;
+	z-index: 1000;
+}
+
+.menu-start {
+	position: absolute;
+	top: 44%;
+	left: 0%;
+	width: 100%;
+	height: 20%;
+	background: #375EAB;
+	border-radius: 150px;
+	border: 1px solid #375EAB;
+	cursor: pointer;
+	transition: 500ms all ease;
+}
+
+.menu-start:hover > p {
+	padding: 5%;
+}
+
+.menu-start > p {
+	text-align: center;
+	padding: 4%;
+	font-size: 2.5em;
+}
+
+.menu-new-player {
+	position: absolute;
+	top: 66%;
+	left: 0%;
+	width: 100%;
+	height: 20%;
+	background: #375EAB;
+	border-radius: 150px;
+	border: 1px solid #375EAB;
+	cursor: pointer;
+	transition: 500ms all ease;
+}
+
+.menu-new-player:hover > p {
+	padding: 7%;
+}
+
+.menu-new-player > p {
+	text-align: center;
+	padding: 6%;
+	font-size: 2em;
+}
+
+.menu-new-player-input {
+	position: absolute;
+	top: 88%;
+	right: 8%;
+	width: 80%;
+	height: 20px;
+	background: #efe9e9;
+	border: 1px solid #375eab;
+	transition: 300ms opacity ease;
+	opacity: 1;
+}
+
+.menu-disable {
+	background: #675f5f;
+	border: 1px solid #4c4848;
+	cursor: none;
+}
+
+.menu-hide {
+	opacity: 0;
+}
+
+.info-board {
+	position: absolute;
+	bottom: 2%;
+	left: 50%;
+	transform: translateX(-50%);
+	background: #01663d;
+	border: 5px solid #272626;
+	border-radius: 10px;
+	z-index: 1000;
+	width: 300px;
+	height: 100px;
+}
+
+.info-board-name {
+	float: left;
+	width: 100%;
+	height: 50%;
+}
+
+.info-board-name > p:nth-child(1) {
+	float: left;
+	width: 30%;
+	height: 100%;
+	text-align: right;
+	font-size: 2em;
+	line-height: 1.5em;
+}
+
+.info-board-name > p:nth-child(2) {
+	float: left;
+	width: 65%;
+	height: 100%;
+	text-align: left;
+	font-size: 2em;
+	line-height: 1.5em;
+	padding-left: 5%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.info-board-score {
+	float: left;
+	width: 100%;
+	height: 50%;
+}
+
+.info-board-score > p:nth-child(1) {
+	float: left;
+	width: 30%;
+	height: 100%;
+	text-align: right;
+	font-size: 2em;
+	line-height: 1em;
+}
+
+.info-board-score > p:nth-child(2) {
+	float: left;
+	width: 65%;
+	height: 100%;
+	text-align: left;
+	font-size: 2em;
+	line-height: 1em;
+	padding-left: 5%;
+}
+
+.try-your-luck-gif{
+	position: absolute;
+	top: 4%;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 580px;
+	height: 100px;
+	background: url(../images/try_your_luck.gif) no-repeat;
+	background-size: 100%;
+	z-index: 1000;
 }

@@ -10,7 +10,7 @@ import Fixtures  from "Js/utils/fixtures.js";
 export default class Loading {
     constructor() {
         this.assets = new Assets();
-        this.table = new Table();
+        this.table = Table;
         this.menu = new Menu();
     }
 
@@ -143,6 +143,5 @@ export default class Loading {
     complete() {
         this.menu.initialize();
         console.log("loading complete...");
-        console.log(Game.stage)
     }
 }

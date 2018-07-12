@@ -5,7 +5,7 @@ import Logic  from "Js/game/logic.js";
 import Game  from "Js/utils/game.js";
 import Fixtures  from "Js/utils/fixtures.js";
 
-export default class Table {
+class Table {
     constructor() {
         this.logic = new Logic();
         this.continueDisable = false;
@@ -19,7 +19,12 @@ export default class Table {
         let gameResult = Game.currentResult = this.logic.generateGameResult();
 
         Game.isPlaying = true;
-        this.setGameResult(gameResult, cardLeft, cardRight);
+        Game.disableNewPlayer = true;
+        Game.disableMenu("gNewPlayer", "menu-disable", true);
+        Game.disableMenu("gInputNewPlayer", "menu-hide", true);
+
+        if(Game.needToClearStage) this.clickContinue();
+        else this.setGameResult(gameResult, cardLeft, cardRight);
     }
 
     setGameResult(gameResult, cardLeft, cardRight) {
@@ -149,6 +154,11 @@ export default class Table {
         const continueBtn = Game.stage.getChildByName("continueBtn");
         continueBtn.visible = true;
         this.continueDisable = false;
+        Game.disableNewPlayer = false;
+        Game.needToClearStage = true;
+        Game.disableMenu("gNewPlayer", "menu-disable", false)
+        Game.disableMenu("gInputNewPlayer", "menu-hide", false);
+        Game.setPlayerScoreInDom(Game.player.score);
 
         this.continueBtnAnimation(continueBtn);
     }
@@ -163,6 +173,10 @@ export default class Table {
     clickContinue() {
         if(this.continueDisable) return;
         this.continueDisable = true;
+        Game.needToClearStage = false;
+        Game.disableNewPlayer = true;
+        Game.disableMenu("gNewPlayer", "menu-disable", true);
+        Game.disableMenu("gInputNewPlayer", "menu-hide", true);
         this.clearStage();
     }
 
@@ -299,3 +313,5 @@ export default class Table {
         playingCard.getChildByName("card_back").visible = true;
     }
 }
+
+export default new Table();
